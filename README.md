@@ -1,4 +1,4 @@
-Plotly Go API
+Plotly Go API [ CURRENTLY MOVING FROM https://github.com/plotly/golang-api ]
 =============
 
 The Go API is heavily based on the work by https://github.com/baruchlubinsky/go-plotly
@@ -7,7 +7,7 @@ This package provides wrapper functions for [Plotly](https://plot.ly)'s HTTP API
 
 Install the library with:
 
-    go get github.com/plotly/go-api/plotly
+    go get -u github.com/plotly/plotly.go
 
 
 Authentication
