@@ -3,12 +3,11 @@ package plotly
 import (
 	"encoding/json"
 	"fmt"
+
+	"github.com/MetalBlueberry/go-plotly/graph_objects"
 )
 
-type Figure struct {
-	Layout Layout  `json:"layout,omitempty"`
-	Data   []Trace `json:"data,omitempty"`
-}
+type Figure graph_objects.Fig
 
 func (f *Figure) Save(filename string) (*PostResponse, error) {
 	req := NewRequest()
@@ -46,15 +45,15 @@ func F(in float64) *float64 {
 type Data []*Trace
 
 type Trace struct {
-	Type   string   `json:"type"`
-	X      Array    `json:"x,omitempty"`
-	Y      Array    `json:"y,omitempty"`
-	Z      Array    `json:"z,omitempty"`
-	R      Array    `json:"r,omitempty"`
-	T      Array    `json:"t,omitempty"`
-	Mode   *string  `json:"mode,omitempty"`
-	Name   *string  `json:"name,omitempty"`
-	Text   Array    `json:"text,omitempty"`
+	Type   string    `json:"type"`
+	X      Array     `json:"x,omitempty"`
+	Y      Array     `json:"y,omitempty"`
+	Z      Array     `json:"z,omitempty"`
+	R      Array     `json:"r,omitempty"`
+	T      Array     `json:"t,omitempty"`
+	Mode   *string   `json:"mode,omitempty"`
+	Name   *string   `json:"name,omitempty"`
+	Text   Array     `json:"text,omitempty"`
 	ErrorX *ErrorBar `json:"error_x,omitempty"`
 	ErrorY *ErrorBar `json:"error_y,omitempty"`
 	Marker *Marker   `json:"marker,omitempty"`

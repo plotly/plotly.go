@@ -4,21 +4,27 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/plotly/go-api/plotly"
+	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
+	"github.com/plotly/plotly.go"
 )
 
 // This program creates a plot on plotly, retrieves it, and saves it as an image.
 func main() {
+	// fig := grob.Fig{
+	// 	Data: grob.Traces{
+	// 		&grob.Scatter{
+	// 			Type: grob.TraceTypeScatter,
+	// 			X:    []float64{4.54, 3, 34, 35, 362},
+	// 			Y:    []int{1, 2, 3, 4, 5},
+	// 		},
+	// 	},
+	// }
 	f := plotly.Figure{
-		Data: []plotly.Trace{
-			plotly.Trace{
-				Type: "scatter",
-				X: plotly.Array{
-					4.54, 3, 34, 35, 362,
-				},
-				Y: plotly.Array{
-					1, 2, 3, 4, 5,
-				},
+		Data: grob.Traces{
+			&grob.Scatter{
+				Type: grob.TraceTypeScatter,
+				X:    []float64{4.54, 3, 34, 35, 362},
+				Y:    []int{1, 2, 3, 4, 5},
 			},
 		},
 	}
