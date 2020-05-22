@@ -10,15 +10,6 @@ import (
 
 // This program creates a plot on plotly, retrieves it, and saves it as an image.
 func main() {
-	// fig := grob.Fig{
-	// 	Data: grob.Traces{
-	// 		&grob.Scatter{
-	// 			Type: grob.TraceTypeScatter,
-	// 			X:    []float64{4.54, 3, 34, 35, 362},
-	// 			Y:    []int{1, 2, 3, 4, 5},
-	// 		},
-	// 	},
-	// }
 	f := &grob.Fig{
 		Data: grob.Traces{
 			&grob.Scatter{
