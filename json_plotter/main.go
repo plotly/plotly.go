@@ -9,6 +9,7 @@ import (
 	"path"
 	"time"
 
+	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
 	"github.com/plotly/plotly.go"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
@@ -25,7 +26,7 @@ var (
 func main() {
 	kingpin.MustParse(app.Parse(os.Args[1:]))
 	var inputReader io.Reader
-	var figure plotly.Figure
+	var figure *grob.Fig
 	if *inputFile == "" {
 		inputReader = os.Stdin
 	} else {

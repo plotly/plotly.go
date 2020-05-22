@@ -3,15 +3,18 @@ package plotly
 import (
 	"encoding/json"
 	"fmt"
+
+	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
 )
 
-func Create(filename string, figure Figure, public bool) (url Url, err error) {
+func Create(filename string, figure *grob.Fig, public bool) (url Url, err error) {
 	request := NewRequest()
 	request.Origin = "plot"
 	args, err := json.Marshal(figure.Data)
 	if err != nil {
 		return
 	}
+	request.Figure = figure
 	request.Args = string(args)
 	request.Kwargs = fmt.Sprintf(`{"filename":"%v",
         "fileopt":"overwrite",

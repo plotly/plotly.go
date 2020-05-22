@@ -10,6 +10,8 @@ import (
 	"os"
 	"path"
 	"strings"
+
+	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
 )
 
 func init() {
@@ -69,7 +71,7 @@ type Request struct {
 	Origin   string
 	Platform string
 	Version  string
-	Figure   *Figure
+	Figure   *grob.Fig
 	Filename string
 	Args     string // DEPRECATED, use Figure instead
 	Kwargs   string
@@ -88,7 +90,7 @@ type PostResponse struct {
 }
 
 type Payload struct {
-	Figure Figure `json:"figure"`
+	Figure grob.Fig `json:"figure"`
 }
 
 type GetResponse struct {
@@ -152,7 +154,6 @@ func Post(data *Request) (result *PostResponse, err error) {
 	fmt.Printf("HEY %#v", coded)
 	response, err := client.PostForm(POSTURL, data.urlEncode())
 
-
 	if err != nil {
 		return
 	}
@@ -184,7 +185,7 @@ func Get(id string) (result *GetResponse, err error) {
 	return
 }
 
-func Download(figure Figure, filename string) (err error) {
+func Download(figure grob.Fig, filename string) (err error) {
 	payload := Payload{Figure: figure}
 	data, err := json.Marshal(payload)
 	if err != nil {
