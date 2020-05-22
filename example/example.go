@@ -19,7 +19,7 @@ func main() {
 	// 		},
 	// 	},
 	// }
-	f := plotly.Figure{
+	f := &grob.Fig{
 		Data: grob.Traces{
 			&grob.Scatter{
 				Type: grob.TraceTypeScatter,
@@ -29,7 +29,7 @@ func main() {
 		},
 		Layout: &grob.Layout{},
 	}
-	result, err := f.Save("new golang file")
+	result, err := plotly.SaveFig(f, "new golang file")
 	if err != nil {
 		fmt.Println(err)
 		return

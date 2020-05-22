@@ -72,7 +72,7 @@ type Request struct {
 	Origin   string
 	Platform string
 	Version  string
-	Figure   *Figure
+	Figure   *grob.Fig
 	Filename string
 	Args     string // DEPRECATED, use Figure instead
 	Kwargs   string
@@ -124,6 +124,7 @@ func (r *Request) urlEncode() url.Values {
 	v.Set("platform", r.Platform)
 	v.Set("version", r.Version)
 	// TODO: handle ERRORS !
+	log.Printf("%#v", r.Figure)
 	args, _ := json.Marshal(r.Figure.Data)
 	v.Set("args", string(args))
 	kwargs, _ := json.Marshal(map[string]interface{}{

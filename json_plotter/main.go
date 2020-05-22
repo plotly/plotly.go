@@ -5,10 +5,12 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"os"
 	"path"
 	"time"
 
+	grob "github.com/MetalBlueberry/go-plotly/graph_objects"
 	"github.com/plotly/plotly.go"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
@@ -25,7 +27,7 @@ var (
 func main() {
 	kingpin.MustParse(app.Parse(os.Args[1:]))
 	var inputReader io.Reader
-	var figure plotly.Figure
+	var figure *grob.Fig
 	if *inputFile == "" {
 		inputReader = os.Stdin
 	} else {
@@ -41,6 +43,7 @@ func main() {
 	//figure.Layout = string(tempLayout)
 
 	check(err, "Error while processing data. Should contain a 'data' and 'layout' element only.")
+	log.Printf("%#v", figure)
 	isPublic := !*private
 	url, err := plotly.Create(*name, figure, isPublic)
 	check(err, "Error while POSTing to plot.ly.")

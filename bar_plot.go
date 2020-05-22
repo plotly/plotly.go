@@ -46,7 +46,7 @@ func StackedBarPlot(categories []string, colors []string, data map[string][]inte
     }
   }
   `, title, yTitle, xTitle)
-	figure := Figure{
+	figure := &grob.Fig{
 		Data: traces,
 	}
 	return Create(filename, figure, public)
