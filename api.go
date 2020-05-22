@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -124,7 +123,6 @@ func (r *Request) urlEncode() url.Values {
 	v.Set("platform", r.Platform)
 	v.Set("version", r.Version)
 	// TODO: handle ERRORS !
-	log.Printf("%#v", r.Figure)
 	args, _ := json.Marshal(r.Figure.Data)
 	v.Set("args", string(args))
 	kwargs, _ := json.Marshal(map[string]interface{}{
@@ -183,7 +181,6 @@ func Get(id string) (result *GetResponse, err error) {
 	if err != nil {
 		return
 	}
-	log.Print(string(body))
 	err = json.Unmarshal(body, &result)
 	return
 }

@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"os"
 	"path"
 	"time"
@@ -43,7 +42,6 @@ func main() {
 	//figure.Layout = string(tempLayout)
 
 	check(err, "Error while processing data. Should contain a 'data' and 'layout' element only.")
-	log.Printf("%#v", figure)
 	isPublic := !*private
 	url, err := plotly.Create(*name, figure, isPublic)
 	check(err, "Error while POSTing to plot.ly.")
