@@ -27,10 +27,9 @@ func main() {
 				Y:    []int{1, 2, 3, 4, 5},
 			},
 		},
+		Layout: &grob.Layout{},
 	}
 	result, err := f.Save("new golang file")
-
-	fmt.Println(result)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -38,7 +37,6 @@ func main() {
 		fmt.Printf("Successfully created plot!\nFilename: %v\nURL: %v\n", result.Filename, result.Url)
 	}
 
-	fmt.Println(result)
 	fields := strings.Split(result.Url, "/")
 	id := fields[4]
 	response, err := plotly.Get(id)
