@@ -1,3 +1,7 @@
+This project is no longer maintained
+=============
+¯\_(ツ)_/¯
+
 Plotly Go API [ CURRENTLY MOVING FROM https://github.com/plotly/golang-api ]
 =============
 
